@@ -1,0 +1,20 @@
+body{
+    padding: 0%;
+    margin: 0%;
+}
+.header{
+    width: 100%;
+    height: 150vh;
+    background-image: url(fon1.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.header .nav{
+    width: 80%;
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid;
+}
