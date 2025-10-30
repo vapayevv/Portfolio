@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Ob-havo | 15-min versiya</title>
+  <style>
+    body{background:#222;color:#fff;font-family:Arial,Helvetica,sans-serif;display:flex;height:100vh;align-items:center;justify-content:center}
+    .card{background:#333;padding:2rem 2.5rem;border-radius:12px;text-align:center;width:300px}
+    input,button{width:100%;padding:.6rem;border:none;border-radius:6px;margin:.4rem 0}
+    button{background:#ff9800;font-weight:bold;cursor:pointer}
+    button:hover{background:#ffb74d}
+    #out{margin-top:1rem}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Ob-havo</h1>
+    <input id="c" placeholder="Shahar nomini kiriting">
+    <button onclick="getW()">Qidirish</button>
+    <div id="out"></div>
+  </div>
+
+  <script>
+    // OpenWeather dan olingan bepul kalit (hech qanday server sozlamalari talab qilmaydi)
+    const KEY = 'e4bc4a9d6b3d2b64a4e6c5a7b8f9c1de'; // 👈 istersiz o‘zingizniki bilan almashtiring
+
+    async function getW() {
+      const city = document.getElementById('c').value.trim();
+      if (!city) return alert('Shahar nomini kiriting!');
+      const out = document.getElementById('out');
+      out.textContent = 'Yuklanmoqda...';
+
+      try {
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=uz&appid=${KEY}`);
+        if (!res.ok) throw new Error('Shahar topilmadi');
+        const d = await res.json();
+
+        out.innerHTML = `
+          <h2>${d.name}, ${d.sys.country}</h2>
+          <p><b>${Math.round(d.main.temp)}°C</b></p>
+          <p>${d.weather[0].description}</p>
+          <p>His qilinadi: ${Math.round(d.main.feels_like)}°C</p>
+          <p>Namlik: ${d.main.humidity}%</p>
+        `;
+      } catch (e) {
+        out.textContent = 'Xatolik: ' + e.message;
+      }
+    }
+  </script>
+</body>
+</html>
