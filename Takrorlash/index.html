@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Document
+        </title>
+    </head>
+    <body>
+        <!-- 1 -->
+         <input type="text" id="yosh" placeholder="Yoshingizni kiriting: ">
+         <button onclick="tugmaBos()">Bosing!!!</button><br><br>
+
+        <!-- 2 -->
+         <input type="text" id="son" placeholder="Son kiriting: ">
+         <button onclick="tugmaniBos()">Bosing!!!</button>
+
+        <!-- 3 -->
+         <input type="text" id="son1" placeholder="Son kiriting: ">
+         <button onclick="tBos()">Bosing!!!</button>
+
+        <script>
+            // 1
+            function tugmaBos() {
+                let yosh = document.getElementById("yosh").value;
+                if (yosh >= 18) {
+                    alert("Siz kattasiz");
+                } else {
+                    alert("Siz kichkinsiz");
+                }
+            }
+
+            // 2
+            function tugmaniBos() {
+                let son = document.getElementById("son").value;
+                if (son % 2 == 0) {
+                    alert("Bu Juft son");
+                } else {
+                    alert("Bu Toq son");
+                }
+            }
+
+            // 3
+            
+        </script>
+    </body>
+</html>
